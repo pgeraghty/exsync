@@ -35,7 +35,7 @@ defmodule ExSync.SrcMonitor do
     #   :attribute
     # Rather than coding specific behaviors for each OS, look for the modified event in
     # isolation to trigger things.
-    matching_event? = :modified in events
+    matching_event? = Enum.any?(events, & &1 == :modified or &1 == :moved_to)
 
     state =
       if matching_extension? && matching_event? do
