@@ -7,8 +7,8 @@ defmodule ExSync.Application do
         start_supervisor()
 
       _ ->
-        Logger.error("ExSync NOT started. Only `:dev` environment is supported.")
-        {:ok, self()}
+        Logger.warn("ExSync starting. NB: ExSync is only meant for dev environments.")
+        start_supervisor()
     end
   end
 
